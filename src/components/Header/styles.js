@@ -45,7 +45,7 @@ export const MenuScreen = styled.div`
       left: 0px;
     `}
   ${(props) =>
-    props.isPage === "explore"
+    props.isPage === "/explore"
       ? css`
           .links {
             a:last-child {

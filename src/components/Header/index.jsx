@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { useRouteMatch } from "react-router-dom";
+import { useLocation } from "react-router-dom";
 import { disableBodyScroll, enableBodyScroll } from "body-scroll-lock";
 
 import { Link } from "react-router-dom";
@@ -13,7 +13,7 @@ import searchIcon from "../../assets/icons/Search.svg";
 
 const Header = () => {
   const [isMenuOpen, setMenuOpen] = useState(false);
-  const { params } = useRouteMatch();
+  const location = useLocation();
 
   isMenuOpen ? disableBodyScroll(document) : enableBodyScroll(document);
 
@@ -42,7 +42,7 @@ const Header = () => {
         </div>
       </Container>
 
-      <MenuScreen isOpen={isMenuOpen} isPage={params}>
+      <MenuScreen isOpen={isMenuOpen} isPage={location.pathname}>
         <button onClick={toggleMenu} className="close">
           <img src={closeIcon} alt="" />
         </button>

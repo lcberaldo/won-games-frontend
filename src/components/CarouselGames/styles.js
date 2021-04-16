@@ -1,9 +1,7 @@
 import styled, { css } from "styled-components";
 
 export const Container = styled.div`
-  & + div {
-    margin-top: 50px;
-  }
+  margin-top: 50px;
 `;
 
 export const SectionTitle = styled.span`

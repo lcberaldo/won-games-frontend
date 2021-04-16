@@ -3,7 +3,7 @@ import footerBg from "../../assets/img/Footer.png";
 
 export const Container = styled.div`
   background: url("${footerBg}");
-  margin-top: 100px;
+  margin-top: 50px;
   width: 100%;
   position: relative;
   bottom: 0;
