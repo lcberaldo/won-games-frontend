@@ -10,7 +10,7 @@ import { IoExitOutline } from "react-icons/io5";
 import Header from "../../components/Header";
 import Footer from "../../components/Footer";
 
-const Profile = () => {
+const Welcome = () => {
   return (
     <>
       <Header />
@@ -49,4 +49,4 @@ const Profile = () => {
   );
 };
 
-export default Profile;
+export default Welcome;

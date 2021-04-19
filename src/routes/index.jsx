@@ -5,7 +5,7 @@ import Home from "../pages/Home";
 import Explore from "../pages/Explore";
 import Login from "../pages/Login";
 import Signup from "../pages/Signup";
-import Profile from "../pages/Profile";
+import Welcome from "../pages/Welcome";
 
 const Routes = () => {
   return (
@@ -14,7 +14,7 @@ const Routes = () => {
       <Route exact path="/login" component={Login} />
       <Route exact path="/signup" component={Signup} />
       <Route exact path="/explore" component={Explore} />
-      <Route exact path="/profile" component={Profile} />
+      <Route exact path="/welcome" component={Welcome} />
     </Switch>
   );
 };

@@ -59,7 +59,7 @@ const Header = () => {
 
           <span>ou</span>
 
-          <Link className="signup" to="/">
+          <Link className="signup" to="/signup">
             Crie sua conta
           </Link>
         </div>

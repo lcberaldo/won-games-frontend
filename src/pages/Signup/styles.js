@@ -34,6 +34,14 @@ export const Container = styled.div`
     background: #eaeaea;
     border-radius: 2px;
     position: relative;
+    outline: none;
+
+    .right {
+      svg {
+        left: unset;
+        right: 10px;
+      }
+    }
 
     svg {
       font-size: 40px;
@@ -54,6 +62,7 @@ export const Container = styled.div`
       padding-right: 20px;
       font-size: 16px;
       color: #969696;
+
       &:focus {
         outline: 2px solid #f23131;
       }
