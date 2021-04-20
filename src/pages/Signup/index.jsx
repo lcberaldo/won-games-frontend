@@ -14,37 +14,59 @@ import {
 import { Container } from "./styles";
 import logo from "../../assets/img/Logo-login.png";
 
+const schema = Yup.object().shape({
+  name: Yup.string().required("Nome obrigatório"),
+  email: Yup.string()
+    .required("E-mail obrigatório")
+    .email("Digite um e-mail válido"),
+  password: Yup.string().min(6, "No mínimo 6 caracteres"),
+});
+
 const Signup = () => {
   const [isHidden, setHidden] = useState(true);
+  const [nameError, setNameError] = useState(false);
+  const [emailError, setEmailError] = useState(false);
+  const [passError, setPassError] = useState(false);
 
-  const handleSubmit = useCallback(async (data) => {
-    data.preventDefault();
+  const handleSubmit = useCallback(async (e) => {
+    e.preventDefault();
+
+    setNameError(false);
+    setEmailError(false);
+    setPassError(false);
 
     try {
       const user = {
-        name: data.target[0].value,
-        email: data.target[1].value,
-        password: data.target[2].value,
+        name: e.target.name.value,
+        email: e.target.email.value,
+        password: e.target.pass.value,
       };
 
-      const schema = Yup.object().shape({
-        name: Yup.string().required("Nome obrigatório"),
-        email: Yup.string()
-          .required("E-mail obrigatório")
-          .email("Digite um e-mail válido"),
-        password: Yup.string().min(6, "No mínimo 6 caracteres"),
+      await schema.validate(user, {
+        abortEarly: false,
       });
 
-      await schema
-        .validate(user, {
-          abortEarly: false,
-        })
-        .catch(function (err) {
-          const errors = err.errors;
-          console.log(errors);
-        });
+      const response = await api.post("/user/create/", user);
+
+      console.log(response);
     } catch (err) {
       console.log(err);
+      const errors = err.inner;
+
+      errors.forEach((e) => {
+        if (e.message === "Nome obrigatório") {
+          setNameError(e.message);
+        }
+        if (
+          e.message === "E-mail obrigatório" ||
+          e.message === "Digite um e-mail válido"
+        ) {
+          setEmailError(e.message);
+        }
+        if (e.message === "No mínimo 6 caracteres") {
+          setPassError(e.message);
+        }
+      });
     }
   }, []);
 
@@ -58,12 +80,14 @@ const Signup = () => {
         <form onSubmit={handleSubmit}>
           <div className="input">
             <BsPersonBoundingBox />
-            <input type="text" name="email" id="" placeholder="Nome Completo" />
+            <input type="text" name="name" id="" placeholder="Nome Completo" />
+            {nameError && <p>{nameError}</p>}
           </div>
 
           <div className="input">
             <FiMail />
             <input type="email" name="email" id="" placeholder="Email" />
+            {emailError && <p>{emailError}</p>}
           </div>
 
           <div className="input">
@@ -74,6 +98,8 @@ const Signup = () => {
               id=""
               placeholder="Senha"
             />
+            {passError && <p>{passError}</p>}
+
             <button className="right" onClick={() => setHidden(!isHidden)}>
               {isHidden ? <AiOutlineEyeInvisible /> : <AiOutlineEye />}
             </button>

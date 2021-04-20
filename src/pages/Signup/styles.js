@@ -36,6 +36,13 @@ export const Container = styled.div`
     position: relative;
     outline: none;
 
+    p {
+      font-size: 10px;
+      color: red;
+      margin-bottom: 5px;
+      display: block;
+    }
+
     .right {
       svg {
         left: unset;
@@ -74,7 +81,7 @@ export const Container = styled.div`
     }
 
     & + div {
-      margin-top: 15px;
+      margin-top: 20px;
     }
   }
 
