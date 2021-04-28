@@ -14,10 +14,79 @@ export const Container = styled.div`
     transform: translate(-50%, 0%);
   }
 
-  div {
+  .user,
+  .lg-nav {
+    display: none;
+  }
+
+  .right-btns {
     width: 25%;
     display: flex;
     justify-content: space-between;
+  }
+
+  @media (min-width: 1100px) {
+    padding: 0 100px;
+
+    .mid-btn,
+    .menu-btn {
+      display: none;
+    }
+
+    .lg-nav {
+      width: 300px;
+      display: flex;
+      align-items: inherit;
+      justify-content: space-between;
+
+      a {
+        font-weight: 500;
+        font-size: 16px;
+        line-height: 24px;
+        color: #fafafa;
+        text-decoration: none;
+        border-bottom: 3px solid transparent;
+      }
+    }
+
+    .right-btns {
+      width: 250px;
+      .user {
+        display: flex;
+        align-items: center;
+        position: relative;
+        span {
+          margin-left: 10px;
+          font-weight: 500;
+          font-size: 16px;
+          line-height: 24px;
+          color: #fafafa;
+        }
+
+        .icon-down {
+          font-size: 24px;
+          color: #fafafa;
+          margin-left: 10px;
+        }
+      }
+    }
+
+    ${(props) =>
+      props.isPage === "/explore"
+        ? css`
+            .lg-nav {
+              a:last-of-type {
+                border-color: #f231a5;
+              }
+            }
+          `
+        : css`
+            .lg-nav {
+              a:first-of-type {
+                border-color: #f231a5;
+              }
+            }
+          `}
   }
 `;
 
@@ -128,5 +197,53 @@ export const MenuScreen = styled.div`
     position: absolute;
     right: 30px;
     top: 30px;
+  }
+
+  @media (min-width: 1100px) {
+    display: none;
+  }
+`;
+
+export const DropdownProfile = styled.div`
+  width: 224px;
+  padding: 15px 0;
+  background: #fafafa;
+  position: absolute;
+  top: 170%;
+  right: 0;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  border-radius: 4px;
+
+  a {
+    font-size: 16px;
+    line-height: 24px;
+    display: flex;
+    align-items: center;
+    color: #030517;
+    text-decoration: none;
+    padding: 10px 15px;
+    position: relative;
+    z-index: 2;
+    &:hover {
+      background: #f231a5;
+      color: white;
+    }
+
+    svg {
+      margin-right: 10px;
+    }
+  }
+
+  .detail {
+    width: 50px;
+    height: 50px;
+    background: #fafafa;
+    position: absolute;
+    right: 30px;
+    top: -10px;
+    transform: rotate(-45deg);
+    z-index: 1;
   }
 `;
