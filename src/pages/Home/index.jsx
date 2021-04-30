@@ -3,7 +3,12 @@ import Slider from "react-slick";
 
 import bannerTeste from "../../assets/img/banner-teste.png";
 import bannerHome from "../../assets/img/banner-home.png";
-import { CarouselContainer, ItemContainer } from "./styles";
+import {
+  CarouselContainer,
+  ItemContainer,
+  ContainerLg,
+  BannerDetail,
+} from "./styles";
 import CarouselGames from "../../components/CarouselGames";
 import Header from "../../components/Header";
 import Footer from "../../components/Footer";
@@ -21,48 +26,57 @@ const Home = () => {
   return (
     <>
       <Header />
+      <ContainerLg>
+        <CarouselContainer>
+          <Slider {...settings}>
+            <ItemContainer>
+              <img src={bannerHome} alt="" />
 
-      <CarouselContainer>
-        <Slider {...settings}>
-          <ItemContainer>
-            <img src={bannerHome} alt="" />
+              <BannerDetail>
+                <span>New release</span>
+              </BannerDetail>
 
-            <div>
-              <span className="title">Desafie a morte</span>
-              <p>
-                Jogue a nova temporada de{" "}
-                <span className="color">Crashlands</span>
-              </p>
+              <div className="caption">
+                <span className="title">Desafie a morte</span>
+                <p>
+                  Jogue a nova temporada de{" "}
+                  <span className="color">Crashlands</span>
+                </p>
 
-              <button className="btn-cta">Comprar agora</button>
-            </div>
-          </ItemContainer>
+                <button className="btn-cta">Comprar agora</button>
+              </div>
+            </ItemContainer>
 
-          <ItemContainer>
-            <img src={bannerHome} alt="" />
+            <ItemContainer>
+              <img src={bannerHome} alt="" />
 
-            <div>
-              <span className="title">Desafie a morte</span>
-              <p>
-                Jogue a nova temporada de{" "}
-                <span className="color">Crashlands</span>
-              </p>
+              <BannerDetail>
+                <span>New release</span>
+              </BannerDetail>
 
-              <button className="btn-cta">Comprar agora</button>
-            </div>
-          </ItemContainer>
-        </Slider>
-      </CarouselContainer>
+              <div className="caption">
+                <span className="title">Desafie a morte</span>
+                <p>
+                  Jogue a nova temporada de{" "}
+                  <span className="color">Crashlands</span>
+                </p>
 
-      <CarouselGames sectionTitle="Lançamentos" hasBanner={false} />
+                <button className="btn-cta">Comprar agora</button>
+              </div>
+            </ItemContainer>
+          </Slider>
+        </CarouselContainer>
 
-      <CarouselGames
-        sectionTitle="Mais populares"
-        hasBanner={true}
-        bannerImg={bannerTeste}
-        bannerTitle="Read Dead está de de volta!"
-        bannerDescription="Venha conhecer as novas aventuras de John Marston"
-      />
+        <CarouselGames sectionTitle="New Releases" hasBanner={false} />
+
+        <CarouselGames
+          sectionTitle="Mais populares"
+          hasBanner={true}
+          bannerImg={bannerTeste}
+          bannerTitle="Read Dead está de de volta!"
+          bannerDescription="Venha conhecer as novas aventuras de John Marston"
+        />
+      </ContainerLg>
 
       <Footer />
     </>

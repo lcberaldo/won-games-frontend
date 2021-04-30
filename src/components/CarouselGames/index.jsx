@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect, useRef } from "react";
 import Slider from "react-slick";
 
 import { Container, SectionTitle, Banner, CarouselContainer } from "./styles";
@@ -12,17 +12,31 @@ const CarouselGames = ({
   bannerImg,
   bannerDescription,
 }) => {
-  const settings = {
-    arrows: false,
+  const custom_settings = {
+    arrows: true,
     infinite: false,
+    slidesToShow: 3,
     speed: 500,
-    slidesToShow: 1.2,
-    slidesToScroll: 1,
+    responsive: [
+      {
+        breakpoint: 1100,
+        arrows: false,
+        settings: { slidesToShow: 1.2, slidesToScroll: 1, arrows: false },
+      },
+    ],
   };
+
+  let isRelease;
+
+  if (sectionTitle === "New Releases") {
+    isRelease = true;
+  }
 
   return (
     <>
-      <Container>
+      <Container isRelease={isRelease}>
+        <div className="bg-lg"></div>
+
         <SectionTitle>{sectionTitle}</SectionTitle>
         {hasBanner && (
           <Banner>
@@ -37,7 +51,25 @@ const CarouselGames = ({
         )}
 
         <CarouselContainer>
-          <Slider {...settings}>
+          <Slider {...custom_settings}>
+            <GameCard
+              gameImg={cardImg}
+              title={"Population Zero"}
+              subTitle={"Other Ocean"}
+              price={"215,00"}
+            />
+            <GameCard
+              gameImg={cardImg}
+              title={"Population Zero"}
+              subTitle={"Other Ocean"}
+              price={"215,00"}
+            />
+            <GameCard
+              gameImg={cardImg}
+              title={"Population Zero"}
+              subTitle={"Other Ocean"}
+              price={"215,00"}
+            />
             <GameCard
               gameImg={cardImg}
               title={"Population Zero"}

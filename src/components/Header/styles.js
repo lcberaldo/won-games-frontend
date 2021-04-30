@@ -26,7 +26,8 @@ export const Container = styled.div`
   }
 
   @media (min-width: 1100px) {
-    padding: 0 100px;
+    max-width: 90%;
+    margin: 0 auto;
 
     .mid-btn,
     .menu-btn {

@@ -1,7 +1,32 @@
-import styled from "styled-components";
+import styled, { css } from "styled-components";
+import bannerLg from "../../assets/img/bg-carousel-releases.png";
 
 export const Container = styled.div`
   margin-top: 50px;
+  @media (min-width: 1100px) {
+    width: 1078px;
+
+    .bg-lg {
+      display: none;
+      height: 650px;
+      width: 100%;
+      position: absolute;
+      background-image: url(${bannerLg});
+      background-repeat: no-repeat;
+      background-size: cover;
+      left: 0;
+      bottom: -182px;
+    }
+
+    ${(props) =>
+      props.isRelease &&
+      css`
+        width: 100%;
+        .bg-lg {
+          display: block;
+        }
+      `}
+  }
 `;
 
 export const SectionTitle = styled.span`
@@ -12,6 +37,12 @@ export const SectionTitle = styled.span`
   display: flex;
   align-items: center;
   margin: 0 20px 20px 20px;
+
+  @media (min-width: 1100px) {
+    margin-left: 0;
+    position: relative;
+    z-index: 2;
+  }
 
   &::before {
     display: inline-block;
@@ -28,6 +59,20 @@ export const CarouselContainer = styled.div`
 
   .slick-slide {
     padding-right: 24px;
+  }
+
+  @media (min-width: 1100px) {
+    padding-left: unset;
+    position: relative;
+    z-index: 2;
+
+    .slick-slide {
+      padding-right: 40px;
+    }
+
+    .slick-prev {
+      display: none !important;
+    }
   }
 `;
 
